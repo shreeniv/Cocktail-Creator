@@ -37,7 +37,8 @@ def bubble_data():
                     ORDER BY s.cocktail DESC;")
     results = mycursor.fetchall()
     result_dicts = [ {"cocktail": result[0], "ingredient": result[1], "measure": result[2], "unit": result[3]} for result in results]
-    return (result_dicts)
+    # return (result_dicts)
+    return {'name': 'sachin'}
     
 def measure_data():
     mycursor.execute("SELECT * FROM measure;")
