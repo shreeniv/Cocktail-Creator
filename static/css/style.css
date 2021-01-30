@@ -17,7 +17,6 @@ img {
 }
 
 
-
 #svg_box {
   text-align: center;
   position: relative;
@@ -72,9 +71,27 @@ h3 {
   font-family: Brush Script MT;
 }
 
+h4 {
+  text-align: center;
+  color: white;
+  font-size: 40px;
+  font-family: Brush Script MT;
+
+}
+
 h1 {
   font-size: 30px;
 }
+
+hr { 
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: inset;
+  border-width: 2px;
+} 
 
 .selDataset {
   width: 280px;
@@ -91,5 +108,16 @@ h1 {
     height: 35px;
     margin-top: 11px;
     margin-bottom: 25px;
+}
+
+
+.popupImage {
+  max-width: 200px;
+  max-height: 200px;
+}
+
+.leaflet-popup-content-wrapper {
+  /* background-color: #9B0BB4; */
+  background-image: url("../Images/chalkboard.jpg")
 }
 

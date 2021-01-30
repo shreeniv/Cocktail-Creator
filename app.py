@@ -26,7 +26,7 @@ else:
 def state_data():
     mycursor.execute("select * from state")
     results = mycursor.fetchall()
-    result_dicts = [ {"state": result[0], "abbr": result[1], "latitude": result[2], "longitude": result[3], "cocktail": result[4], "image_scr": result[5]} for result in results]
+    result_dicts = [ {"state": result[0], "abbr": result[1], "latitude": result[2], "longitude": result[3], "cocktail": result[4], "image_src": result[5]} for result in results]
     return jsonify(result_dicts)
 
 # Create an instance of Flask for bubble
@@ -50,6 +50,13 @@ def cocktail_name_data():
     results = mycursor.fetchall()
     result_dicts = [ {"cocktail": result[0], "category": result[1]} for result in results]
     return jsonify(result_dicts)
+
+def recipe_data():
+    mycursor.execute("SELECT * FROM recipe;")
+    results = mycursor.fetchall()
+    result_dicts = [ {"cocktail": result[0], "glass_type": result[1], "glass_size": result[2], "instructions": result[3]} for result in results]
+    return jsonify(result_dicts)
+
    
 app = Flask(__name__)
 
@@ -67,7 +74,19 @@ def scrape():
 def home():
     print("responding to home route request")
     # Return template and data
+    return render_template("index.html")
+
+@app.route("/homepage")
+def home2():
+    print("responding to homepage route request")
+    # Return template and data
     return render_template("homepage.html")
+
+@app.route("/not_21")
+def not_21():
+    print("responding to 21 route request")
+    # Return template and data
+    return render_template("not_21.html")
 
 @app.route("/measure-data")
 def measure():
@@ -94,6 +113,13 @@ def scrape2():
 @app.route("/bubble")
 def bubble2():
     return render_template("bubble.html")
+
+@app.route("/recipe-data")
+def recipes():
+    recipe = recipe_data()
+    print("responding to recipe-data request")
+    return (recipe)
+
 
 
 if __name__ == "__main__":

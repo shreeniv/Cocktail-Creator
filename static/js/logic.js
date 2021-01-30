@@ -6,7 +6,7 @@ d3.json("/raw-web-api", function (leafletData) {
   // Creating map object
   var myMap = L.map("mapid", {
     center: [37.09, -95.71],
-    zoom: 5
+    zoom: 4
   });
 
   // Adding tile layer
@@ -15,7 +15,7 @@ d3.json("/raw-web-api", function (leafletData) {
     tileSize: 512,
     maxZoom: 18,
     zoomOffset: -1,
-    id: "mapbox/light-v10",
+    id: "mapbox/outdoors-v11",
     accessToken: API_KEY
   }).addTo(myMap);
 
@@ -28,10 +28,10 @@ d3.json("/raw-web-api", function (leafletData) {
 
 
       .bindPopup(
-        "<h2 style=text-align:center;>" + leafletData[i].state +
-        "</h2><hr><h4><p style=text-align:center;>" + leafletData[i].cocktail + "</p></h4>"
+        "<h3 style=text-align:center;>" + leafletData[i].state +
+        "</h3><hr><h4><p style=text-align:center;>" + leafletData[i].cocktail + "</p></h4>"
         + "<br>" +
-        "<img src=" + leafletData[i].image_scr + " alt='cocktail' &previewImage='true'</img>"
+        "<img src='" + leafletData[i].image_src + "'" + " class=popupImage " + "/>"
       ));
 
   }
