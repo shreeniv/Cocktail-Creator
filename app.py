@@ -4,6 +4,11 @@ import os
 import psycopg2
 import numpy as np
 import socket
+from flask_sqlalchemy import SQLAlchemy
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '') or "sqlite:///db.sqlite"
+
+# Remove tracking modifications
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db_name = "cocktail_db"
 
