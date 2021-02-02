@@ -6,7 +6,7 @@ import os
 import psycopg2
 import numpy as np
 import socket
-import SQLAlchemy from flask_sqlalchemy
+#import SQLAlchemy from flask_sqlalchemy
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '') or "sqlite:///db.sqlite"
 
 # Remove tracking modifications
