@@ -6,7 +6,9 @@ import os
 import psycopg2
 import numpy as np
 import socket
-#import SQLAlchemy from flask_sqlalchemy
+app = Flask(__name__)
+from flask_sqlalchemy import SQLAlchemy
+
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '') or "sqlite:///db.sqlite"
 
 # Remove tracking modifications
@@ -96,9 +98,6 @@ def recipe_data():
     results = mycursor.fetchall()
     result_dicts = [ {"cocktail": result[0], "glass_type": result[1], "glass_size": result[2], "instructions": result[3]} for result in results]
     return jsonify(result_dicts)
-
-   
-app = Flask(__name__)
 
 app.config['SESSION_COOKIE_SAMESITE'] = True
 app.config['SESSION_COOKIE_SECURE'] = True
